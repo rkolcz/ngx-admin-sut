@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  sut:
+    image: node:14
+    container_name: pw-sut
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "4200:4200"
+    command: >
+      bash -c "
+      npm install --legacy-peer-deps &&
+      npx ng serve --host 0.0.0.0 --poll 2000
+      "
